@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index File</title>
+    {% load static %}
+    <style>
+        body {
+          text-align: center;
+          background-image: url('{% static "bg2.jpg" %}');
+          background-repeat: no-repeat;
+          background-size: cover;
+          text-emphasis-color: white;
+        }
+    
+        button {
+          background-color: #4893e3;
+          border: none;
+          color: rgb(0, 0, 0);
+          padding: 12px 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          shape-outside: inherit;
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          max-width: 800px;
+          margin: 0 auto;
+          font-size: 1.2rem;
+        }
+        th, td {
+          text-align: left;
+          padding: 8px;
+          border: 1px solid #ddd;
+        }
+        th {
+        background-color: #4CAF50;
+        color: white;
+        }
+        tr:nth-child(even) {
+        background-color: #e0ddce;
+        }
+        tr:hover {
+        background-color: #ddd;
+        }
+        @media screen and (max-width: 600px) {
+        table {
+        font-size: 0.9rem;
+      }
+        }
+    </style>
+</head>
+<body>
+    <h1>Hospital Management System</h1>
+    <a href="/empreg"><button>Add Record</button></a>
+    <a href="/delete"><button>Delete Record</button></a>
+    <a href="/patient"><button>Add Patient</button></a>
+    <a href="/genbill"><button>Generate Bill</button></a> 
+    <a href="/appointment"><button>See Appointment List</button></a>
+
+
+
+    <table>
+      <tr>
+          <th>Name</th>
+          <th>Roll No</th>
+          <th>PRN No</th>
+          <th>Email Id</th>
+      </tr>
+      <tr>
+        <td>Aman Jain</td>
+        <td>223001</td>
+        <td>22110370</td>
+        <td>jain.22110370@viit.ac.in</td>
+      </tr>
+      <tr>
+          <td>Ruchik Bhokare</td>
+          <td>223008</td>
+          <td>22110018</td>
+          <td>ruchik.22110018@viit.ac.in</td>
+      </tr>
+  </table>
+</body>
+</html>

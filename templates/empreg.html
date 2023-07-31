@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Title</title>
+    <style>
+		body {
+			background-image: url('{% static "bg3.jpg" %}');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+<center>
+    <form name="register" method="post" action="../insertEmp/">
+        {%csrf_token%}
+        <pre>
+            <h1>Registration Form</h1>
+            UID             : <input type="text" name="tid" value="" width="200"><br>
+            Name            : <input type="text" name="tname" value="" width="200"><br>
+            Email           : <input type="text" name="temail" value="" width="200"><br>
+            Contact         : <input type="text" name="tcontact" value="" width="200"><br>
+            Consulting Fees : <input type="text" name="tconsult" value="" width="200"><br>
+            <input type="submit" name="req" value="Click to register" width="303" height="100">
+        </pre>
+    </form>
+</center>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Consulting Fees</th>
+    </tr>
+    {% for sts in st %}
+    <tr>
+        <td>{{sts.empid}}</td>
+        <td>{{sts.empname}}</td>
+        <td>{{sts.empemail}}</td>
+        <td>{{sts.empcontact}}</td>
+        <td>{{sts.consultFees}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

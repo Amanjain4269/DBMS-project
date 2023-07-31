@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Generate Bill Window</title>
+    <style>
+		body {
+			background-image: url('{% static "bg6.jpg" %}');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+    <center>
+        <form name="generate" method="post" action="../insertBill/">
+            {%csrf_token%}
+            <pre>
+                <h1>Generate Bill</h1>
+                Select Patient Name : <select name="pat_id">
+                            {% for sts in st %}
+                            <option value="{{ sts.patid }}">{{ sts.patname }}</option>
+                            {% endfor %}
+                        </select>
+                Add Other Charges : <input type="text" name="othercharges" value="" width="200"><br>
+                <input type="submit" name="gen" value="Click to Generate" width="303" height="100">
+            </pre>
+        </form>
+    </center>
+    <table>
+        <tr>
+            <th>Patient Id</th>
+            <th>Patient Name</th>
+            <th>Age</th>
+            <th>Assigned Doctor</th>
+            <th>Total Amount</th>
+            <th>Amount Paid</th>
+            <th>Amount Due</th>
+            <th>Update or Delete Record</th>
+        </tr>
+        {% for gts in gt %}
+        <tr>
+            <td>{{gts.genid}}</td>
+            <td>{{gts.genname}}</td>
+            <td>{{gts.genlink.patge}}</td>
+            <td>{{gts.genlink.emp.empname}}</td>
+            <td>{{gts.genamt}}</td>
+            <td>{{gts.genamtpaid}}</td>
+            <td>{{gts.genamtdue}}</td>
+            <td>
+                <a href="/update/{{gts.id}}">Edit</a> |
+                <a href="/deletebill/{{gts.id}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

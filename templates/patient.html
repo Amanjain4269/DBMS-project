@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Patient Record</title>
+    <style>
+		body {
+			background-image: url('{% static "bg3.jpg" %}');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	</style>
+</head>
+<body>
+<div class="container">    
+    <center>
+        <form name="register" method="post" action="../insertPat/">
+            {%csrf_token%}
+            <pre>
+                <h1>Patient Registration Form</h1>
+                PatID : <input type="text" name="pid" value="" width="200"><br>
+                Name  : <input type="text" name="pname" value="" width="200"><br>
+                Age   : <input type="text" name="page" value="" width="200"><br>
+                Please Select ID of Consulting Doctor : <select name="emp_id">
+                            {% for emp in mt %}
+                            <option value="{{ emp.empid }}">{{ emp.empid }}</option>
+                            {% endfor %}
+                        </select>
+                <input type="submit" name="req" value="Click to register" width="303" height="100">
+            </pre>
+        </form>
+    </center>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Patient Name</th>
+            <th>Age</th>
+            <th>Assigned Doctor</th>
+            <th>Doctor ID</th>
+        </tr>
+        {% for sts in st %}
+        <tr>
+            <td>{{sts.patid}}</td>
+            <td>{{sts.patname}}</td>
+            <td>{{sts.patge}}</td>
+            <td>{{sts.emp.empname}}</td>
+            <td>{{sts.emp.empid}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>    
+</body>
+</html>

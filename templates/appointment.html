@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+		body {
+			background-image: url('{% static "bg4.jpg" %}');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+    <h3>Appointment List</h3>
+    <table>
+        <tr>
+            <th>Patient Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Doctor Assigned</th>
+        </tr>
+        {% for mts in mt %}
+        <tr>
+            <td>{{mts.patid}}</td>
+            <td>{{mts.patname}}</td>
+            <td>{{mts.patge}}</td>
+            <td>{{mts.emp.empname}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Update Details</title>
+    <style>
+		body {
+			background-image: url('{% static "bg5.jpg" %}');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	</style>
+</head>
+<body>
+<div class="container">   
+    <form name="updatedetails" method="post" action="../updatedetails/{{record.id}}">
+        {%csrf_token%}
+        <h3>Enter the details</h3>
+        ID : <input type="text" name="uid" value="{{record.genid}}"><br>
+        Name : <input type="text" name="uname" value="{{record.genname}}"><br>
+        Age : <input type="text" name="uage" value="{{record.genlink.patge}}"><br>
+        Emp name : <input type="text" name="uempname" value="{{record.genlink.emp.empname}}"><br>
+        Total Amount : <input type="text" name="uamt" value="{{record.genamt}}"><br>
+        Amount Paid : <input type="text" name="uamtpaid" value="{{record.genamtpaid}}"><br>
+        Amount Due : <input type="text" name="uamtdue" value="{{record.genamtdue}}"><br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
